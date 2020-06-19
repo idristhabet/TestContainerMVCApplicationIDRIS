@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  test_container_aspmvc:
+    image: ${DOCKER_REGISTRY-}testcontaineraspmvc
+    build:
+      context: .\Test_Container_ASPMVC
+      dockerfile: Dockerfile

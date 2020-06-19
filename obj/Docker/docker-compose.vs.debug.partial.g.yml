@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  test_container_aspmvc:
+    image: testcontaineraspmvc:dev
+    build:
+      args:
+        source: obj/Docker/empty/
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Test_Container_ASPMVC"
+    volumes:
+      - C:\Users\LENOVO\source\repos\Test_Container_ASPMVC\Test_Container_ASPMVC:C:\inetpub\wwwroot
+      - :C:\remote_debugger:ro
+    entrypoint: cmd /c "start /B C:\\ServiceMonitor.exe w3svc & C:\\remote_debugger\\x64\\msvsmon.exe /noauth /anyuser /silent /nostatus /noclrwarn /nosecuritywarn /nofirewallwarn /nowowwarn /timeout:2147483646"
+    environment:
+      - DEV_ENVIRONMENT=1
+      - VBCSCOMPILER_TTL=604800
+
